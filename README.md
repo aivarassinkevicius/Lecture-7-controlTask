@@ -1,5 +1,7 @@
-# UAB Sveikata - AI Health Assistant
+Projektas kaip ir pavyko, dauguma funkcijų veikia, bent jau pas mane :) o apie pamąstymus, tai reikia galingesnio kompiuterio, nes daug kur susiduri su tokiomis bėdomis, kaip pvz. gemma3:4b reikia min 4,9 GB RAM laisvų pas mane iš 8 tik 3,9 GB laisvi, tada renkasi mažesnį modelį, bet tas tada sako , kad ne visas komandas gali vykdyti :) dar labai labai keista, kai pythonas ir kitos programos instaliuotos, ojis vis tikrina kuria tas aplinkas, kurios užtrunka ir gan nemažai laiko. Bet visumoje viskas labai įdomu!
 
+# UAB Sveikata - AI Health Assistant
+ 
 A professional Streamlit web application that generates personalized weekly exercise routines using AI models. Developed for UAB Sveikata to provide safe, medically-aware health and exercise recommendations.
 
 ## 🏥 Professional Health Features
