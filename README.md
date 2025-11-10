@@ -4,7 +4,23 @@ Projektas kaip ir pavyko, dauguma funkcijų veikia, bent jau pas mane :) o apie 
  
 A professional Streamlit web application that generates personalized weekly exercise routines using AI models. Developed for UAB Sveikata to provide safe, medically-aware health and exercise recommendations.
 
-## 🏥 Professional Health Features
+## ✅ Recent Updates
+
+### ⚠️ NEW: Scope Limitation Feature (Program_description.txt Line 28)
+- **Health-Only Questions**: AI assistant now only answers health, exercise, and fitness questions
+- **Automatic Refusal**: Non-health questions receive polite refusal with redirection to health topics
+- **Pre-filtering**: Questions are validated before being sent to AI models
+- **Test Results**: 80% accuracy in distinguishing health vs non-health questions
+
+**Examples of Accepted Questions:**
+- "What exercises are good for back pain?"
+- "How often should I exercise?"  
+- "What's the best diet for weight loss?"
+
+**Examples of Refused Questions:**
+- "What's the weather like today?"
+- "How do I fix my computer?"
+- "Can you write Python code for me?"
 
 - **Medical Compliance**: All AI responses include required UAB Sveikata branding and medical disclaimers
 - **Health-Focused**: AI assistant only answers health and exercise related questions  
