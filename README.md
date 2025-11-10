@@ -1,12 +1,24 @@
-# AI Exercise Routine Generator
+# UAB Sveikata - AI Health Assistant
 
-A Streamlit web application that generates personalized weekly exercise routines using AI models through Ollama.
+A professional Streamlit web application that generates personalized weekly exercise routines using AI models. Developed for UAB Sveikata to provide safe, medically-aware health and exercise recommendations.
 
-## Features
+## 🏥 Professional Health Features
 
+- **Medical Compliance**: All AI responses include required UAB Sveikata branding and medical disclaimers
+- **Health-Focused**: AI assistant only answers health and exercise related questions  
+- **Safety First**: Comprehensive safety considerations for all age groups and health conditions
+- **Professional Standards**: Follows healthcare industry standards for AI-assisted recommendations
+- **Input Validation**: Ensures only appropriate data formats (numbers for age, specific goal options)
+- **Response Validation**: Verifies AI responses meet medical compliance requirements
+
+## 🔧 Technical Features
+
+- **Dual AI Provider Support**: Choose between local Ollama models or cloud-based OpenRouter models
 - **Personalized Exercise Plans**: Get custom weekly exercise routines based on your age, health issues, available time, and fitness goals
-- **AI-Powered**: Uses advanced language models (Gemma, Llama) through Ollama for intelligent routine generation
-- **User-Friendly Interface**: Clean, intuitive Streamlit web interface
+- **Local & Cloud Options**: 
+  - **Ollama**: Privacy-focused local models (no internet required after setup)
+  - **OpenRouter**: Powerful cloud models with latest AI capabilities
+- **Professional Interface**: Clean, medical-grade user experience optimized for health applications
 - **Flexible Goals**: Support for weight loss and muscle gain objectives
 - **Health-Conscious**: Takes into account age and existing health conditions
 - **Time-Adaptive**: Routines adapted to your available daily exercise time (15-120 minutes)
@@ -14,22 +26,30 @@ A Streamlit web application that generates personalized weekly exercise routines
 ## Requirements
 
 - Python 3.8+
-- Ollama installed and running locally
-- Internet connection for model downloads (first time)
+- **For Ollama**: Ollama installed and running locally
+- **For OpenRouter**: Internet connection and OpenRouter API key
+- Streamlit and requests Python packages
 
 ## Installation
 
+### Option 1: Local AI with Ollama
+
 1. **Install Ollama** (if not already installed):
    - Visit [https://ollama.ai](https://ollama.ai) and download for your OS
-   - Start Ollama service
+   - Start Ollama service: `ollama serve`
 
 2. **Pull AI models** (run these commands in terminal):
    ```bash
-   ollama pull gemma2:9b
-   ollama pull gemma2:2b
-   ollama pull llama3.2:3b
-   ollama pull llama3.2:1b
+   ollama pull gemma3:270m  # Lightweight model for limited RAM
    ```
+
+### Option 2: Cloud AI with OpenRouter
+
+1. **Get OpenRouter API Key**:
+   - Visit [https://openrouter.ai](https://openrouter.ai)
+   - Sign up and get your API key from [https://openrouter.ai/keys](https://openrouter.ai/keys)
+
+### Setup Python Environment
 
 3. **Install Python dependencies**:
    ```bash
@@ -51,16 +71,27 @@ A Streamlit web application that generates personalized weekly exercise routines
    - Available daily exercise time (15-120 minutes)
    - Primary goal (lose weight or gain muscle)
 
-4. **Select an AI model** and click "Generate My Exercise Routine"
+4. **Choose AI Provider**:
+   - **Ollama (Local)**: Select local model and ensure Ollama is running
+   - **OpenRouter (Cloud)**: Enter your API key and select a cloud model
 
-5. **Review your personalized routine** and download it as a text file
+5. **Generate routine** and download it as a text file
 
 ## AI Models Available
 
-- **gemma2:9b** - Most comprehensive responses (recommended)
-- **gemma2:2b** - Faster, lighter model
-- **llama3.2:3b** - Good balance of speed and quality
-- **llama3.2:1b** - Fastest response times
+### Ollama (Local)
+- **gemma3:270m** - Ultra-lightweight model (works with limited RAM)
+- Privacy-focused (no data sent to cloud)
+- Requires local setup but runs offline
+
+### OpenRouter (Cloud)  
+- **google/gemma-2-9b-it** - Advanced Gemma model
+- **google/gemma-2-27b-it** - Large Gemma model
+- **anthropic/claude-3.5-sonnet** - Claude 3.5 Sonnet
+- **openai/gpt-4o-mini** - GPT-4 Omni Mini
+- **meta-llama/llama-3.1-8b-instruct** - Llama 3.1
+- **mistralai/mistral-7b-instruct** - Mistral 7B
+- Latest AI capabilities but requires internet and API costs
 
 ## Project Structure
 
