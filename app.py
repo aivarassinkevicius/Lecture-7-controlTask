@@ -1,6 +1,7 @@
 import streamlit as st
 import requests
 import json
+import os
 
 # Set page configuration
 st.set_page_config(
@@ -50,6 +51,64 @@ def query_ollama(prompt, model="gemma3:270m"):
         return "⏱️ Error: Request timed out. The model might be loading or the prompt is too complex. Please try again."
     except Exception as e:
         return f"❌ Error: {str(e)}"
+
+def query_openrouter(prompt, model="google/gemma-2-9b-it"):
+    """
+    Query OpenRouter API with the given prompt
+    """
+    api_key = st.session_state.get('openrouter_api_key', '')
+    
+    if not api_key:
+        return "❌ Error: OpenRouter API key is required. Please enter it in the sidebar."
+    
+    try:
+        url = "https://openrouter.ai/api/v1/chat/completions"
+        headers = {
+            "Authorization": f"Bearer {api_key}",
+            "HTTP-Referer": "http://localhost:8501",
+            "X-Title": "Exercise Routine Generator",
+            "Content-Type": "application/json"
+        }
+        
+        data = {
+            "model": model,
+            "messages": [
+                {"role": "user", "content": prompt}
+            ]
+        }
+        
+        response = requests.post(url, headers=headers, json=data, timeout=60)
+        response.raise_for_status()
+        
+        result = response.json()
+        
+        if 'error' in result:
+            return f"❌ OpenRouter Error: {result['error'].get('message', 'Unknown error')}"
+        
+        if 'choices' in result and len(result['choices']) > 0:
+            return result['choices'][0]['message']['content']
+        else:
+            return "❌ No response received from OpenRouter"
+        
+    except requests.exceptions.RequestException as e:
+        if hasattr(e, 'response') and hasattr(e.response, 'status_code') and e.response.status_code == 401:
+            return "❌ Error: Invalid OpenRouter API key. Please check your API key."
+        return f"❌ OpenRouter connection error: {str(e)}"
+    except Exception as e:
+        return f"❌ Error: {str(e)}"
+
+def generate_routine(age, health_issues, exercise_time, goal, provider, model):
+    """
+    Generate exercise routine using selected provider and model
+    """
+    prompt = create_exercise_prompt(age, health_issues, exercise_time, goal)
+    
+    if provider == "Ollama":
+        return query_ollama(prompt, model)
+    elif provider == "OpenRouter":
+        return query_openrouter(prompt, model)
+    else:
+        return "❌ Error: Invalid provider selected"
 
 def create_exercise_prompt(age, health_issues, exercise_time, goal):
     """
