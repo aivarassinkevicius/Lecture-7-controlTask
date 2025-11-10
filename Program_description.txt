@@ -1,0 +1,16 @@
+Use streamlit to create a web interface.
+The user can interact with the gemma3:4b model via Ollama.
+
+Main funciotns:
+Once a model is selected, the program should allow the user to input:
+
+The user's age (in years).
+The user's known health issues.
+How much time the user can dedicate to exercise per day.
+The user's goal:
+Lose weight
+Gain muscle
+The program should then return a recommended weekly exercise routine (what the user should do each day of the week, repeatable every week).
+
+Tips:
+use/Contex7_Docs folder to see exeample of library usage.
